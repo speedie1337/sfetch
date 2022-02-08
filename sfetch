@@ -98,7 +98,7 @@ tput setaf 5; echo "  QSSSSSSP       $initicon $(tput sgr0)     $init"
 fi
 
 if [[ $art =~ "Arch" ]]; then
-tput setaf 3; echo "                 $user@$host"
+tput setaf 3; echo "                $user@$host"
 tput setaf 6; echo "       .        $osicon $(tput sgr0)         $os"
 tput setaf 6; echo "      /#\       $kernelicon $(tput sgr0)     $kernel"
 tput setaf 6; echo "     /###\      $shellicon $(tput sgr0)      $shell"
@@ -110,7 +110,7 @@ tput setaf 6; echo "/P^         ^q\ $initicon $(tput sgr0)       $init"
 fi
 
 if [[ $art =~ "Project 081" ]]; then
-tput setaf 3; echo  "               $user@$host"
+tput setaf 3; echo  "              $user@$host"
 tput setaf 6; echo  " Y88b   d88P  $osicon $(tput sgr0)     $os"
 tput setaf 6; echo  "  Y88b d88P   $kernelicon $(tput sgr0) $kernel"
 tput setaf 6; echo  "   Y88o88P    $shellicon $(tput sgr0)  $shell"
@@ -122,7 +122,7 @@ tput setaf 6; echo  " d88P   Y88b  $(tput sgr0) "
 fi
 
 if [[ $art =~ "Mac OS X" ]]; then
-tput setaf 3; echo  "               $user@$host"
+tput setaf 3; echo  "              $user@$host"
 tput setaf 0; echo  " Y88b   d88P  $osicon $(tput sgr0)     $os"
 tput setaf 0; echo  "  Y88b d88P   $kernelicon $(tput sgr0) $kernel"
 tput setaf 0; echo  "   Y88o88P    $shellicon $(tput sgr0)  $shell"
@@ -134,7 +134,7 @@ tput setaf 0; echo  " d88P   Y88b  $(tput sgr0) "
 fi
 
 if [[ $art =~ "Funtoo" ]]; then
-tput setaf 3; echo  "                       $user@$host"
+tput setaf 3; echo  "                      $user@$host"
 tput setaf 5; echo "   __             _    $osicon $(tput sgr0)       $os"
 tput setaf 5; echo "  / _|_   _ _ __ | |_  $kernelicon $(tput sgr0)   $kernel"
 tput setaf 5; echo " | |_| | | | '_ \| __| $shellicon $(tput sgr0)    $shell"
@@ -146,7 +146,7 @@ tput setaf 5; echo "                       $initicon $(tput sgr0)     $init "
 fi
 
 if [[ $art = "Linux" ]]; then
-tput setaf 3; echo "              $user@$host"
+tput setaf 3; echo "             $user@$host"
 tput setaf 3; echo "     .--.    $osicon $(tput sgr0)       $os"
 tput setaf 3; echo "    |o_o |   $kernelicon $(tput sgr0)   $kernel" 
 tput setaf 3; echo "    |:_/ |   $shellicon $(tput sgr0)    $shell"
