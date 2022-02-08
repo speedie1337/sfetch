@@ -16,6 +16,16 @@ elif [[ -f "/System/Library/CoreServices/SystemVersion.plist" ]]; then
 	mac="$(cat /System/Library/CoreServices/SystemVersion.plist)" && macmodel="$(sysctl hw.model | sed 's/hw.model: //')"
 fi
 
+if [[ -f "/lib/systemd/systemd" ]]; then
+	init="systemd"
+elif [[ -f "/sbin/openrc" ]]; then
+	init="OpenRC"
+elif [[ -f "/usr/local/bin/runsvdir" ]]; then
+	init="runit"
+elif [[ -f "/usr/bin/s6-rc" ]]; then
+	init="s6"
+fi
+
 # Gentoo first because Gentoo is based
 if [[ $os =~ "Gentoo" ]]; then
 	os="Gentoo" && art="Gentoo"
@@ -51,95 +61,100 @@ host="$(hostname)"
 
 # Data
 kernel="$(uname -sr)" # Get kernel version
-gnu="$(uname -o)"
 shell="$(basename "${SHELL}")"
 pkg="$(ls -d /var/db/pkg/*/* | wc -l)"
+cpu="$(uname -p)"
+totalram="$(cat /proc/meminfo | grep -i 'memtotal' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}')"
+usedram="$(cat /proc/meminfo | grep -i 'Active:' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}' | awk 'NR!=2')"
 
 # Label/Icons
 kernelicon="KERNEL:"
-osicon="DISTRO:"
+osicon="OS:"
 shellicon="SHELL:"
 pkgicon="PACKAGES:"
 macicon="MAC:"
+cpuicon="CPU:"
+initicon="INIT:"
+usedramicon="USED:"
+ramicon="RAM:"
 
-#os="Gentoo" # For testing only
-#art="Linux" # For testing only
+os="Arch" # For testing only
+art="Linux" # For testing only
 #tput setaf 3; echo $user@$host" # For testing only
 
 # Display everything to the user!
 # NOTE: Ascii must be 8 lines in height!
 
 if [[ $art = "Gentoo" ]]; then
-tput setaf 3; echo "                  $user@$host"
-tput setaf 5; echo "    dSSSSSb.     $(tput sgr0) "
-tput setaf 5; echo " .dSSSSSSSSSb.   $(tput sgr0) "
-tput setaf 5; echo " SSSS( )SSSSSSb  $(tput sgr0) $osicon $os $gnu"
-tput setaf 5; echo " QSSSSSSSSSSSSSb $(tput sgr0) $kernelicon $kernel"
-tput setaf 5; echo "   dSSSSSSSSSSP  $(tput sgr0) $shellicon $shell"
-tput setaf 5; echo "  dSSSSSSSSSP    $(tput sgr0) $pkgicon $pkg" 
-tput setaf 5; echo " SSSSSSSSSSP     $(tput sgr0) "
-tput setaf 5; echo "  QSSSSSSP       $(tput sgr0) "
+tput setaf 3; echo "                 $user@$host"
+tput setaf 5; echo "    dSSSSSb.     $osicon $(tput sgr0)       $os"
+tput setaf 5; echo " .dSSSSSSSSSb.   $kernelicon $(tput sgr0)   $kernel"
+tput setaf 5; echo " SSSS( )SSSSSSb  $shellicon $(tput sgr0)    $shell"
+tput setaf 5; echo " QSSSSSSSSSSSSSb $pkgicon $(tput sgr0) $pkg"
+tput setaf 5; echo "   dSSSSSSSSSSP  $cpuicon $(tput sgr0)      $cpu"
+tput setaf 5; echo "  dSSSSSSSSSP    $ramicon $(tput sgr0)      $totalram" 
+tput setaf 5; echo " SSSSSSSSSSP     $usedramicon $(tput sgr0)     $usedram "
+tput setaf 5; echo "  QSSSSSSP       $initicon $(tput sgr0)     $init"
 fi
 
 if [[ $art =~ "Arch" ]]; then
 tput setaf 3; echo "                 $user@$host"
-tput setaf 6; echo "       .        $(tput sgr0) "
-tput setaf 6; echo "      /#\       $(tput sgr0) "
-tput setaf 6; echo "     /###\      $(tput sgr0) $osicon $os $gnu"
-tput setaf 6; echo "    /p^###\     $(tput sgr0) $kernelicon $kernel"
-tput setaf 6; echo "   /##P^q##\    $(tput sgr0) $shellicon $shell"
-tput setaf 6; echo "  /##(   )##\   $(tput sgr0) $pkgicon $pkg"
-tput setaf 6; echo " /###q#    ,^\  $(tput sgr0) "
-tput setaf 6; echo "/P^         ^q\ $(tput sgr0) "
+tput setaf 6; echo "       .        $osicon $(tput sgr0)         $os"
+tput setaf 6; echo "      /#\       $kernelicon $(tput sgr0)     $kernel"
+tput setaf 6; echo "     /###\      $shellicon $(tput sgr0)      $shell"
+tput setaf 6; echo "    /p^###\     $pkgicon $(tput sgr0)   $pkg"
+tput setaf 6; echo "   /##P^q##\    $cpuicon $(tput sgr0)        $cpu"
+tput setaf 6; echo "  /##(   )##\   $ramicon $(tput sgr0)        $totalram"
+tput setaf 6; echo " /###q#    ,^\  $usedramicon $(tput sgr0)       $usedram"
+tput setaf 6; echo "/P^         ^q\ $initicon $(tput sgr0)       $init"
 fi
 
 if [[ $art =~ "Project 081" ]]; then
 tput setaf 3; echo  "               $user@$host"
-tput setaf 6; echo  " Y88b   d88P  $(tput sgr0) "
-tput setaf 6; echo  "  Y88b d88P   $(tput sgr0) "
-tput setaf 6; echo  "   Y88o88P    $(tput sgr0) $osicon $os"
-tput setaf 6; echo  "    Y888P     $(tput sgr0) $kernelicon $kernel"
-tput setaf 6; echo  "    d888b     $(tput sgr0) $shellicon $shell"
-tput setaf 6; echo  "   d88888b    $(tput sgr0) $macicon $macmodel"
-tput setaf 6; echo  "  d88P Y88b   $(tput sgr0) "
+tput setaf 6; echo  " Y88b   d88P  $osicon $(tput sgr0)     $os"
+tput setaf 6; echo  "  Y88b d88P   $kernelicon $(tput sgr0) $kernel"
+tput setaf 6; echo  "   Y88o88P    $shellicon $(tput sgr0)  $shell"
+tput setaf 6; echo  "    Y888P     $macicon $(tput sgr0) $macmodel"
+tput setaf 6; echo  "    d888b     $cpuicon $(tput sgr0)    $cpu"
+tput setaf 6; echo  "   d88888b    $ramicon $(tput sgr0)    $totalram"
+tput setaf 6; echo  "  d88P Y88b   $usedramicon $(tput sgr0)   $usedram"
 tput setaf 6; echo  " d88P   Y88b  $(tput sgr0) "
 fi
 
 if [[ $art =~ "Mac OS X" ]]; then
 tput setaf 3; echo  "               $user@$host"
-tput setaf 0; echo  " Y88b   d88P  $(tput sgr0) "
-tput setaf 0; echo  "  Y88b d88P   $(tput sgr0) "
-tput setaf 0; echo  "   Y88o88P    $(tput sgr0) $osicon $os"
-tput setaf 0; echo  "    Y888P     $(tput sgr0) $kernelicon $kernel"
-tput setaf 0; echo  "    d888b     $(tput sgr0) $shellicon $shell"
-tput setaf 0; echo  "   d88888b    $(tput sgr0) $macicon $macmodel"
-tput setaf 0; echo  "  d88P Y88b   $(tput sgr0) "
+tput setaf 0; echo  " Y88b   d88P  $osicon $(tput sgr0)     $os"
+tput setaf 0; echo  "  Y88b d88P   $kernelicon $(tput sgr0) $kernel"
+tput setaf 0; echo  "   Y88o88P    $shellicon $(tput sgr0)  $shell"
+tput setaf 0; echo  "    Y888P     $macicon $(tput sgr0) $macmodel"
+tput setaf 0; echo  "    d888b     $cpuicon $(tput sgr0)    $cpu"
+tput setaf 0; echo  "   d88888b    $ramicon $(tput sgr0)    $totalram"
+tput setaf 0; echo  "  d88P Y88b   $usedramicon $(tput sgr0)   $usedram"
 tput setaf 0; echo  " d88P   Y88b  $(tput sgr0) "
 fi
 
-
 if [[ $art =~ "Funtoo" ]]; then
 tput setaf 3; echo  "                       $user@$host"
-tput setaf 5; echo "   __             _   $(tput sgr0) "
-tput setaf 5; echo "  / _|_   _ _ __ | |_ $(tput sgr0) "
-tput setaf 5; echo " | |_| | | | '_ \| __|$(tput sgr0) $osicon $os $gnu"
-tput setaf 5; echo " |  _| |_| | | | | |_ $(tput sgr0) $kernelicon $kernel"
-tput setaf 5; echo " |_|  \__,_|_| |_|\__|$(tput sgr0) $shellicon $shell"
-tput setaf 5; echo "                      $(tput sgr0) $pkgicon $pkg"
-tput setaf 5; echo "                      $(tput sgr0) "
-tput setaf 5; echo "                      $(tput sgr0) "
+tput setaf 5; echo "   __             _    $osicon $(tput sgr0)       $os"
+tput setaf 5; echo "  / _|_   _ _ __ | |_  $kernelicon $(tput sgr0)   $kernel"
+tput setaf 5; echo " | |_| | | | '_ \| __| $shellicon $(tput sgr0)    $shell"
+tput setaf 5; echo " |  _| |_| | | | | |_  $pkgicon $(tput sgr0) $pkg "
+tput setaf 5; echo " |_|  \__,_|_| |_|\__| $cpuicon $(tput sgr0)      $cpu"
+tput setaf 5; echo "                       $ramicon $(tput sgr0)      $totalram"
+tput setaf 5; echo "                       $usedramicon $(tput sgr0)     $usedram"
+tput setaf 5; echo "                       $initicon $(tput sgr0)     $init "
 fi
 
 if [[ $art = "Linux" ]]; then
 tput setaf 3; echo "              $user@$host"
-tput setaf 3; echo "     .--.    $(tput sgr0) "
-tput setaf 3; echo "    |o_o |   $(tput sgr0) " 
-tput setaf 3; echo "    |:_/ |   $(tput sgr0) $osicon $os $gnu"
-tput setaf 3; echo "   //   \ \  $(tput sgr0) $kernelicon $kernel"
-tput setaf 3; echo "  (|     | ) $(tput sgr0) $shellicon $shell"
-tput setaf 3; echo " /'|_   _/'\ $(tput sgr0) $pkgicon $pkg"
-tput setaf 3; echo " \___)=(___/ $(tput sgr0) "
-tput setaf 3; echo "             $(tput sgr0) "
+tput setaf 3; echo "     .--.    $osicon $(tput sgr0)       $os"
+tput setaf 3; echo "    |o_o |   $kernelicon $(tput sgr0)   $kernel" 
+tput setaf 3; echo "    |:_/ |   $shellicon $(tput sgr0)    $shell"
+tput setaf 3; echo "   //   \ \  $pkgicon $(tput sgr0) $pkg"
+tput setaf 3; echo "  (|     | ) $cpuicon $(tput sgr0)      $cpu"
+tput setaf 3; echo " /'|_   _/'\ $ramicon $(tput sgr0)      $totalram"
+tput setaf 3; echo " \___)=(___/ $usedramicon $(tput sgr0)     $usedram"
+tput setaf 3; echo "             $initicon $(tput sgr0)     $init"
 fi
 
-echo "" && exit 0
+exit 0
