@@ -78,8 +78,8 @@ initicon="INIT:"
 usedramicon="USED:"
 ramicon="RAM:"
 
-os="Arch" # For testing only
-art="Linux" # For testing only
+#os="Arch" # For testing only
+#art="Linux" # For testing only
 #tput setaf 3; echo $user@$host" # For testing only
 
 # Display everything to the user!
