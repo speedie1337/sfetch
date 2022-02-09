@@ -1,7 +1,7 @@
 # sfetch
-#### speedie's stupid fetch for macOS/Mac OS X and GNU/Linux
+#### speedie's stupid fetch for macOS/Mac OS X and Linux
 
-![image](https://user-images.githubusercontent.com/71722170/153065637-7bad2abf-de61-4803-b21d-0d6070352dc0.png)
+![image](https://user-images.githubusercontent.com/71722170/153240559-af416946-3948-451b-8f18-00ae9cb7f690.png)
 
 Was bored so I decided to write a fetch tool! 
 
@@ -28,5 +28,5 @@ Was bored so I decided to write a fetch tool!
 
 ## Note:
 - macOS/Mac OS X support has not been tested (Although feel free to test it for me!)
-- Has only been tested with GNU/Linux
+- Has only been tested with Linux
 - Has been tested with both zsh and Bash but feel free to try other shells
