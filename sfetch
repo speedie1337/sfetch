@@ -100,6 +100,10 @@ if [[ -f "/proc/meminfo" ]]; then
         pkg="$(ls -d /var/db/pkg/*/* | wc -l)"
 fi
 
+if [[ "$(whoami)" = "root" ]]; then
+        tput setaf 1; echo "NOTE: Running a fetch script as root is stupid"
+fi
+
 #os="PearOS" # For testing only
 #art="Trash" # For testing only
 #tput setaf 3; echo $user@$host" # For testing only
