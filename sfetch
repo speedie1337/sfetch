@@ -78,11 +78,6 @@ host="$(hostname)" # hostname returns your hostname from /etc/hostname
 # Data
 kernel="$(uname -sr)" # Get kernel version
 shell="$(basename "${SHELL}")"
-
-if [[ -f "/proc/meminfo" ]]; then
-	pkg="$(ls -d /var/db/pkg/*/* | wc -l)"
-fi
-
 totalram="$(cat /proc/meminfo | grep -i 'memtotal' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}')"
 usedram="$(cat /proc/meminfo | grep -i 'Active:' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}' | awk 'NR!=2')"
 
@@ -97,16 +92,13 @@ else
 	cpu="$(sysctl -n machdep.cpu.brand_string)"
 fi
 
-# Label/Icons
-kernelicon="KERNEL:"
-osicon="OS:"
-shellicon="SHELL:"
-pkgicon="PACKAGES:"
-macicon="MAC:"
-cpuicon="CPU:"
-initicon="INIT:"
-usedramicon="USED:"
-ramicon="RAM:"
+if [[ "$os" = "Debian" ]]; then
+        pkg="$(dpkg --get-selections | wc --lines)"
+fi
+
+if [[ -f "/proc/meminfo" ]]; then
+        pkg="$(ls -d /var/db/pkg/*/* | wc -l)"
+fi
 
 #os="PearOS" # For testing only
 #art="Trash" # For testing only
@@ -115,6 +107,7 @@ ramicon="RAM:"
 # Display everything to the user!
 # NOTE: Ascii must be 8 lines in height!
 
+# Gentoo based distributions
 if [[ $art = "Gentoo" ]]; then
 tput setaf 3; echo "                 $user@$host"
 tput setaf 5; echo "    dSSSSSb.     $osicon $(tput sgr0)       $os"
@@ -127,6 +120,19 @@ tput setaf 5; echo " SSSSSSSSSSP     $usedramicon $(tput sgr0)     $usedram "
 tput setaf 5; echo "  QSSSSSSP       $initicon $(tput sgr0)     $init"
 fi
 
+if [[ $art =~ "Funtoo" ]]; then
+tput setaf 3; echo  "                      $user@$host"
+tput setaf 5; echo "   __             _    $osicon $(tput sgr0)       $os"
+tput setaf 5; echo "  / _|_   _ _ __ | |_  $kernelicon $(tput sgr0)   $kernel"
+tput setaf 5; echo " | |_| | | | '_ \| __| $shellicon $(tput sgr0)    $shell"
+tput setaf 5; echo " |  _| |_| | | | | |_  $pkgicon $(tput sgr0) $pkg "
+tput setaf 5; echo " |_|  \__,_|_| |_|\__| $cpuicon $(tput sgr0)      $cpu"
+tput setaf 5; echo "                       $ramicon $(tput sgr0)      $totalram"
+tput setaf 5; echo "                       $usedramicon $(tput sgr0)     $usedram"
+tput setaf 5; echo "                       $initicon $(tput sgr0)     $init "
+fi
+
+# Arch based distributions
 if [[ $art =~ "Arch" ]]; then
 tput setaf 3; echo "                $user@$host"
 tput setaf 6; echo "       .        $osicon $(tput sgr0)         $os"
@@ -139,6 +145,7 @@ tput setaf 6; echo " /###q#    ,^\  $usedramicon $(tput sgr0)       $usedram"
 tput setaf 6; echo "/P^         ^q\ $initicon $(tput sgr0)       $init"
 fi
 
+# macOS distributions
 if [[ $art =~ "Project 081" ]]; then
 tput setaf 3; echo  "              $user@$host"
 tput setaf 6; echo  " Y88b   d88P  $osicon $(tput sgr0)     $os"
@@ -175,18 +182,7 @@ tput setaf 0; echo  "     \___/|____/       $usedramicon $(tput sgr0)   $usedram
 tput setaf 0; echo "$(tput sgr0)"
 fi
 
-if [[ $art =~ "Funtoo" ]]; then
-tput setaf 3; echo  "                      $user@$host"
-tput setaf 5; echo "   __             _    $osicon $(tput sgr0)       $os"
-tput setaf 5; echo "  / _|_   _ _ __ | |_  $kernelicon $(tput sgr0)   $kernel"
-tput setaf 5; echo " | |_| | | | '_ \| __| $shellicon $(tput sgr0)    $shell"
-tput setaf 5; echo " |  _| |_| | | | | |_  $pkgicon $(tput sgr0) $pkg "
-tput setaf 5; echo " |_|  \__,_|_| |_|\__| $cpuicon $(tput sgr0)      $cpu"
-tput setaf 5; echo "                       $ramicon $(tput sgr0)      $totalram"
-tput setaf 5; echo "                       $usedramicon $(tput sgr0)     $usedram"
-tput setaf 5; echo "                       $initicon $(tput sgr0)     $init "
-fi
-
+# Misc
 if [[ $art =~ "Trash" ]]; then
 tput setaf 3; echo  "            $user@$host"
 tput setaf 5; echo "  ____n____  $osicon $(tput sgr0)       $os"
