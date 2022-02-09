@@ -18,6 +18,7 @@ Was bored so I decided to write a fetch tool!
 - Arch Linux
 - Project 081 (Mac OS X distro)
 - Mac OS X
+- macOS (As of 0.2)
 - Linux/Other Distro (used if your OS is none of the above)
 
 ## Use:
