@@ -52,13 +52,13 @@ elif [[ $os =~ "Arch" ]]; then
 elif [[ $os =~ "Debian" ]]; then
 	os="Debian Linux" && art="Linux" # No ASCII art for Debian yet
 elif [[ $os =~ "Pear" ]]; then 
-	os="ShitOS Linux" && art="Linux" # No ASCII art (trash can) for PearOS
+	os="ShitOS Linux" && art="Trash" # Trash can for PearOS
 elif [[ $os =~ "Ubuntu" ]]; then
 	os="Ubuntu Linux" && art="Linux" # No ASCII art for Ubuntu yet
 elif [[ $os =~ "Fedora" ]]; then
 	os="Fedora Linux" && art="Linux" # No ASCII art for Fedora yet
 elif [[ $os =~ "Cutefish" ]]; then
-	os="ShitFish OS Linux" && art="Linux" # No ASCII art (trash can) for Cutefish OS
+	os="ShitFish OS Linux" && art="Trash" # Trash can for Cutefish OS
 elif [[ $os =~ "Manjaro" ]]; then
 	os="Manjarno Linux" && art="Linux" # No ASCII art for Manjaro yet
 elif [[ $os =~ "ANSI" ]]; then
@@ -108,8 +108,8 @@ initicon="INIT:"
 usedramicon="USED:"
 ramicon="RAM:"
 
-#os="macOS" # For testing only
-#art="macOS" # For testing only
+#os="PearOS" # For testing only
+#art="Trash" # For testing only
 #tput setaf 3; echo $user@$host" # For testing only
 
 # Display everything to the user!
@@ -185,6 +185,18 @@ tput setaf 5; echo " |_|  \__,_|_| |_|\__| $cpuicon $(tput sgr0)      $cpu"
 tput setaf 5; echo "                       $ramicon $(tput sgr0)      $totalram"
 tput setaf 5; echo "                       $usedramicon $(tput sgr0)     $usedram"
 tput setaf 5; echo "                       $initicon $(tput sgr0)     $init "
+fi
+
+if [[ $art =~ "Trash" ]]; then
+tput setaf 3; echo  "            $user@$host"
+tput setaf 5; echo "  ____n____  $osicon $(tput sgr0)       $os"
+tput setaf 5; echo " /         \ $kernelicon $(tput sgr0)   $kernel"
+tput setaf 5; echo " -| | | | |- $shellicon $(tput sgr0)    $shell"
+tput setaf 5; echo "  | | | | |  $pkgicon $(tput sgr0) $pkg "
+tput setaf 5; echo "  | | | | |  $cpuicon $(tput sgr0)      $cpu"
+tput setaf 5; echo "  | | | | |  $ramicon $(tput sgr0)      $totalram"
+tput setaf 5; echo "  | | | | |  $usedramicon $(tput sgr0)     $usedram"
+tput setaf 5; echo "  \-------/  $initicon $(tput sgr0)     $init "
 fi
 
 if [[ $art = "Linux" ]]; then
