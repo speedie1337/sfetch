@@ -52,13 +52,13 @@ elif [[ $os =~ "Arch" ]]; then
 elif [[ $os =~ "Debian" ]]; then
 	os="Debian Linux" && art="Linux" # No ASCII art for Debian yet
 elif [[ $os =~ "Pear" ]]; then 
-	os="ShitOS Linux" && art="Trash" # No ASCII art (trash can) for PearOS
+	os="ShitOS Linux" && art="Trash" # Trash can for PearOS
 elif [[ $os =~ "Ubuntu" ]]; then
 	os="Ubuntu Linux" && art="Linux" # No ASCII art for Ubuntu yet
 elif [[ $os =~ "Fedora" ]]; then
 	os="Fedora Linux" && art="Linux" # No ASCII art for Fedora yet
 elif [[ $os =~ "Cutefish" ]]; then
-	os="ShitFish OS Linux" && art="Trash" # No ASCII art (trash can) for Cutefish OS
+	os="ShitFish OS Linux" && art="Trash" # Trash can for Cutefish OS
 elif [[ $os =~ "Manjaro" ]]; then
 	os="Manjarno Linux" && art="Linux" # No ASCII art for Manjaro yet
 elif [[ $os =~ "ANSI" ]]; then
