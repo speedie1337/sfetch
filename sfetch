@@ -92,11 +92,9 @@ else
 	cpu="$(sysctl -n machdep.cpu.brand_string)"
 fi
 
-if [[ "$os" = "Debian" ]]; then
+if [[ -f "/usr/bin/dpkg" ]]; then
         pkg="$(dpkg --get-selections | wc --lines)"
-fi
-
-if [[ -f "/proc/meminfo" ]]; then
+else
         pkg="$(ls -d /var/db/pkg/*/* | wc -l)"
 fi
 
