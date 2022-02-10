@@ -119,7 +119,7 @@ tput setaf 5; echo " QSSSSSSSSSSSSSb $pkgicon $(tput sgr0) $pkg"
 tput setaf 5; echo "   dSSSSSSSSSSP  $cpuicon $(tput sgr0)      $cpu"
 tput setaf 5; echo "  dSSSSSSSSSP    $ramicon $(tput sgr0)      $totalram" 
 tput setaf 5; echo " SSSSSSSSSSP     $usedramicon $(tput sgr0)     $usedram "
-tput setaf 5; echo "  QSSSSSSP       $initicon $(tput sgr0)     $init"
+tput setaf 5; echo "  QSSSSSSP       $initicon $(tput sgr0)     $init" && exit 0
 fi
 
 if [[ $art =~ "Funtoo" ]]; then
@@ -131,7 +131,7 @@ tput setaf 5; echo " |  _| |_| | | | | |_  $pkgicon $(tput sgr0) $pkg "
 tput setaf 5; echo " |_|  \__,_|_| |_|\__| $cpuicon $(tput sgr0)      $cpu"
 tput setaf 5; echo "                       $ramicon $(tput sgr0)      $totalram"
 tput setaf 5; echo "                       $usedramicon $(tput sgr0)     $usedram"
-tput setaf 5; echo "                       $initicon $(tput sgr0)     $init "
+tput setaf 5; echo "                       $initicon $(tput sgr0)     $init " && exit 0
 fi
 
 # Arch based distributions
@@ -144,7 +144,7 @@ tput setaf 6; echo "    /p^###\     $pkgicon $(tput sgr0)   $pkg"
 tput setaf 6; echo "   /##P^q##\    $cpuicon $(tput sgr0)        $cpu"
 tput setaf 6; echo "  /##(   )##\   $ramicon $(tput sgr0)        $totalram"
 tput setaf 6; echo " /###q#    ,^\  $usedramicon $(tput sgr0)       $usedram"
-tput setaf 6; echo "/P^         ^q\ $initicon $(tput sgr0)       $init"
+tput setaf 6; echo "/P^         ^q\ $initicon $(tput sgr0)       $init" && exit 0
 fi
 
 # macOS distributions
@@ -157,7 +157,7 @@ tput setaf 6; echo  "    Y888P     $macicon $(tput sgr0)    $macmodel"
 tput setaf 6; echo  "    d888b     $cpuicon $(tput sgr0)    $cpumac"
 tput setaf 6; echo  "   d88888b    $ramicon $(tput sgr0)    $totalrammac"
 tput setaf 6; echo  "  d88P Y88b   $usedramicon $(tput sgr0)   $usedram"
-tput setaf 6; echo  " d88P   Y88b  $(tput sgr0) "
+tput setaf 6; echo  " d88P   Y88b  $(tput sgr0) " && exit 0
 fi
 
 if [[ $art =~ "Mac OS X" ]]; then
@@ -169,7 +169,7 @@ tput setaf 0; echo  "    Y888P     $macicon $(tput sgr0)    $macmodel"
 tput setaf 0; echo  "    d888b     $cpuicon $(tput sgr0)    $cpu"
 tput setaf 0; echo  "   d88888b    $ramicon $(tput sgr0)    $totalram"
 tput setaf 0; echo  "  d88P Y88b   $usedramicon $(tput sgr0)   $usedram"
-tput setaf 0; echo  " d88P   Y88b  $(tput sgr0) "
+tput setaf 0; echo  " d88P   Y88b  $(tput sgr0) " && exit 0
 fi
 
 if [[ $art =~ "macOS" ]]; then
@@ -181,7 +181,7 @@ tput setaf 0; echo  "     / _ \/ ___|       $macicon $(tput sgr0)    $macmodel"
 tput setaf 0; echo  "    | | | \___ \       $cpuicon $(tput sgr0)    $cpu"
 tput setaf 0; echo  "    | |_| |___) |      $ramicon $(tput sgr0)    $totalram"
 tput setaf 0; echo  "     \___/|____/       $usedramicon $(tput sgr0)   $usedram"
-tput setaf 0; echo "$(tput sgr0)"
+tput setaf 0; echo "$(tput sgr0)" && exit 0
 fi
 
 # Misc
@@ -194,10 +194,10 @@ tput setaf 5; echo "  | | | | |  $pkgicon $(tput sgr0) $pkg "
 tput setaf 5; echo "  | | | | |  $cpuicon $(tput sgr0)      $cpu"
 tput setaf 5; echo "  | | | | |  $ramicon $(tput sgr0)      $totalram"
 tput setaf 5; echo "  | | | | |  $usedramicon $(tput sgr0)     $usedram"
-tput setaf 5; echo "  \-------/  $initicon $(tput sgr0)     $init "
+tput setaf 5; echo "  \-------/  $initicon $(tput sgr0)     $init " && exit 0
 fi
 
-if [[ $art = "Linux" ]]; then
+# Generic art if yours is none of the above
 tput setaf 3; echo "             $user@$host"
 tput setaf 3; echo "     .--.    $osicon $(tput sgr0)       $os"
 tput setaf 3; echo "    |o_o |   $kernelicon $(tput sgr0)   $kernel" 
@@ -207,7 +207,6 @@ tput setaf 3; echo "  (|     | ) $cpuicon $(tput sgr0)      $cpu"
 tput setaf 3; echo " /'|_   _/'\ $ramicon $(tput sgr0)      $totalram"
 tput setaf 3; echo " \___)=(___/ $usedramicon $(tput sgr0)     $usedram"
 tput setaf 3; echo "             $initicon $(tput sgr0)     $init"
-fi
 
 exit 0
 
