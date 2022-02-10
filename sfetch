@@ -61,6 +61,8 @@ elif [[ $os =~ "Cutefish" ]]; then
 	os="ShitFish OS Linux" && art="Trash" # Trash can for Cutefish OS
 elif [[ $os =~ "Manjaro" ]]; then
 	os="Manjarno Linux" && art="Linux" # No ASCII art for Manjaro yet
+elif [[ $os =~ "Void" ]]; then
+        os="Void Linux" && art="Void"
 elif [[ $os =~ "ANSI" ]]; then
 	os="$(uname -s)" && art="Linux" # Linux is the "generic" art
 elif [[ $mac =~ "Mac OS X" ]]; then
@@ -195,6 +197,18 @@ tput setaf 5; echo "  | | | | |  $cpuicon $(tput sgr0)      $cpu"
 tput setaf 5; echo "  | | | | |  $ramicon $(tput sgr0)      $totalram"
 tput setaf 5; echo "  | | | | |  $usedramicon $(tput sgr0)     $usedram"
 tput setaf 5; echo "  \-------/  $initicon $(tput sgr0)     $init " && exit 0
+fi
+
+if [[ $art =~ "Void" ]]; then
+tput setaf 2; echo "                         $user@$host"
+tput setaf 2; echo "                         $osicon $(tput sgr0)       $os"
+tput setaf 2; echo " __     _____ ___ ____   $kernelicon $(tput sgr0)   $kernel"
+tput setaf 2; echo " \ \   / / _ \_ _|  _ \  $shellicon $(tput sgr0)    $shell"
+tput setaf 2; echo "  \ \ / / | | | || | | | $pkgicon $(tput sgr0) $pkg "
+tput setaf 2; echo "   \ V /| |_| | || |_| | $cpuicon $(tput sgr0)      $cpu"
+tput setaf 2; echo "    \_/  \___/___|____/  $ramicon $(tput sgr0)      $totalram"
+tput setaf 2; echo "                         $usedramicon $(tput sgr0)     $usedram"
+tput setaf 2; echo "                         $initicon $(tput sgr0)     $init " && exit 0
 fi
 
 # Generic art if yours is none of the above
