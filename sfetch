@@ -71,7 +71,7 @@ if [[ $os =~ "ANSI" ]]; then
 fi
 
 # Mac OS X distributions
-elif [[ $mac =~ "Mac OS X" ]]; then
+if [[ $mac =~ "Mac OS X" ]]; then
 	os="Mac OS X" && art="Mac OS X"
 elif [[ $mac =~ "macOS" ]]; then
 	os="macOS" && art="macOS"
