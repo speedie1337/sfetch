@@ -50,7 +50,7 @@ elif [[ $os =~ "Funtoo" ]]; then
 elif [[ $os =~ "Arch" ]]; then
 	os="Arch Linux" && art="Arch"
 elif [[ $os =~ "Debian" ]]; then
-	os="Debian Linux" && art="Linux" # No ASCII art for Debian yet
+	os="Debian Linux" && art="Debian"
 elif [[ $os =~ "Pear" ]]; then 
 	os="ShitOS Linux" && art="Trash" # Trash can for PearOS
 elif [[ $os =~ "Ubuntu" ]]; then
@@ -63,8 +63,14 @@ elif [[ $os =~ "Manjaro" ]]; then
 	os="Manjarno Linux" && art="Linux" # No ASCII art for Manjaro yet
 elif [[ $os =~ "Void" ]]; then
         os="Void Linux" && art="Void"
-elif [[ $os =~ "ANSI" ]]; then
+fi
+
+# If the distro is not any of the above
+if [[ $os =~ "ANSI" ]]; then
 	os="$(uname -s)" && art="Linux" # Linux is the "generic" art
+fi
+
+# Mac OS X distributions
 elif [[ $mac =~ "Mac OS X" ]]; then
 	os="Mac OS X" && art="Mac OS X"
 elif [[ $mac =~ "macOS" ]]; then
@@ -209,6 +215,18 @@ tput setaf 2; echo "   \ V /| |_| | || |_| | $cpuicon $(tput sgr0)      $cpu"
 tput setaf 2; echo "    \_/  \___/___|____/  $ramicon $(tput sgr0)      $totalram"
 tput setaf 2; echo "                         $usedramicon $(tput sgr0)     $usedram"
 tput setaf 2; echo "                         $initicon $(tput sgr0)     $init " && exit 0
+fi
+
+if [[ $art =~ "Debian" ]]; then
+tput setaf 1; echo "      wbbqqqw    $user@$host"
+tput setaf 1; echo "    wgw       gq $osicon $(tput sgr0)       $os"
+tput setaf 1; echo "   g     w    g  $kernelicon $(tput sgr0)   $kernel"
+tput setaf 1; echo "   ww    w    wa $shellicon $(tput sgr0)    $shell"
+tput setaf 1; echo "    b     wwwww  $pkgicon $(tput sgr0) $pkg "
+tput setaf 1; echo "    aa           $cpuicon $(tput sgr0)      $cpu"
+tput setaf 1; echo "     wae         $ramicon $(tput sgr0)      $totalram"
+tput setaf 1; echo "        wa       $usedramicon $(tput sgr0)     $usedram"
+tput setaf 1; echo "          aa     $initicon $(tput sgr0)     $init " && exit 0
 fi
 
 # Generic art if yours is none of the above
