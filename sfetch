@@ -60,9 +60,9 @@ elif [[ $os =~ "Fedora" ]]; then
 elif [[ $os =~ "Cutefish" ]]; then
 	os="ShitFish OS Linux" && art="Trash" # Trash can for Cutefish OS
 elif [[ $os =~ "Manjaro" ]]; then
-	os="Manjarno Linux" && art="Linux" # No ASCII art for Manjaro yet
+	os="Manjarno Linux" && art="Manjaro"
 elif [[ $os =~ "Void" ]]; then
-        os="Void Linux" && art="Void"
+    os="Void Linux" && art="Void"
 fi
 
 # If the distro is not any of the above
@@ -227,6 +227,18 @@ tput setaf 1; echo "    aa           $cpuicon $(tput sgr0)      $cpu"
 tput setaf 1; echo "     wae         $ramicon $(tput sgr0)      $totalram"
 tput setaf 1; echo "        wa       $usedramicon $(tput sgr0)     $usedram"
 tput setaf 1; echo "          aa     $initicon $(tput sgr0)     $init " && exit 0
+fi
+
+if [[ $art =~ "Manjaro" ]]; then
+tput setaf 2; echo "                   $user@$host"
+tput setaf 10; echo " ZZZZZZZZZZZ ZZZZZ $osicon $(tput sgr0)       $os"
+tput setaf 10; echo " ZZZZZZZZZZZ ZZZZZ $kernelicon $(tput sgr0)   $kernel"
+tput setaf 10; echo " ZZZZZ zzzzz ZZZZZ $shellicon $(tput sgr0)    $shell"
+tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $pkgicon $(tput sgr0) $pkg "
+tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $cpuicon $(tput sgr0)      $cpu"
+tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $ramicon $(tput sgr0)      $totalram"
+tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $usedramicon $(tput sgr0)     $usedram"
+tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $initicon $(tput sgr0)     $init "
 fi
 
 # Generic art if yours is none of the above
