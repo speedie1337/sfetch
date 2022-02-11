@@ -16,6 +16,9 @@ Was bored so I decided to write a fetch tool!
 - Gentoo Linux
 - Funtoo Linux
 - Arch Linux
+- Fedora Linux
+- Debian Linux
+- Manjaro Linux
 - Project 081 (Mac OS X distro)
 - Mac OS X
 - macOS
