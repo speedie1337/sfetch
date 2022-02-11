@@ -238,7 +238,7 @@ tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $pkgicon $(tput sgr0) $pkg "
 tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $cpuicon $(tput sgr0)      $cpu"
 tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $ramicon $(tput sgr0)      $totalram"
 tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $usedramicon $(tput sgr0)     $usedram"
-tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $initicon $(tput sgr0)     $init "
+tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $initicon $(tput sgr0)     $init " && exit 0
 fi
 
 # Generic art if yours is none of the above
