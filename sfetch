@@ -102,8 +102,12 @@ fi
 
 if [[ -f "/usr/bin/dpkg" ]]; then
         pkg="$(dpkg --get-selections | wc --lines)"
+fi
+
+if [[ -f "/usr/bin/pacman" ]]; then
+        pkg="$(pacman -Q | wc --lines)"
 else
-        pkg="$(ls -d /var/db/pkg/*/* | wc -l)"
+        pkg="$(ls -d /var/db/pkg/*/* | wc --lines)"
 fi
 
 if [[ "$(whoami)" = "root" ]]; then
