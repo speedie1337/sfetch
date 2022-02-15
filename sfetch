@@ -153,7 +153,7 @@ fi
 
 # Arch based distributions
 if [[ $art =~ "Arch" ]]; then
-tput setaf 3; echo "                $user@$host"
+tput setaf 3; echo "                 $user@$host"
 tput setaf 6; echo "        .        $osicon $(tput sgr0)         $os"
 tput setaf 6; echo "       /#\       $kernelicon $(tput sgr0)     $kernel"
 tput setaf 6; echo "      /###\      $shellicon $(tput sgr0)      $shell"
@@ -165,7 +165,7 @@ tput setaf 6; echo " /P^         ^q\ $initicon $(tput sgr0)       $init" && exit
 fi
 
 if [[ $art =~ "Manjaro" ]]; then
-tput setaf 2; echo "                   $user@$host"
+tput setaf 2; echo "                    $user@$host"
 tput setaf 10; echo " ZZZZZZZZZZZ ZZZZZ $osicon $(tput sgr0)       $os"
 tput setaf 10; echo " ZZZZZZZZZZZ ZZZZZ $kernelicon $(tput sgr0)   $kernel"
 tput setaf 10; echo " ZZZZZ zzzzz ZZZZZ $shellicon $(tput sgr0)    $shell"
