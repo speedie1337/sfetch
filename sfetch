@@ -111,6 +111,8 @@ elif [[ -f "/var/db/pkg" ]]; then
         pkg="$(ls -d /var/db/pkg/*/* | wc --lines)" # For everyone else!
 elif [[ -f "/usr/bin/dpkg" ]]; then
         pkg="$(dpkg --get-selections | wc --lines)" # For Debian based distributions
+elif [[ -f "/usr/bin/rpm" ]]; then
+        pkg="$(rpm -qa | wc --lines)" # For Red Hat/Fedora based distributions
 fi
 
 
