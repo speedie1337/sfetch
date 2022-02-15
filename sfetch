@@ -105,15 +105,14 @@ else
 	cpu="$(sysctl -n machdep.cpu.brand_string)"
 fi
 
-if [[ -f "/usr/bin/dpkg" ]]; then
-        pkg="$(dpkg --get-selections | wc --lines)"
+if [[ -f "/usr/bin/pacman" ]]; then
+        pkg="$(pacman -Q | wc --lines)" # For Arch based distributions
+elif [[ -f "/var/db/pkg" ]]; then
+        pkg="$(ls -d /var/db/pkg/*/* | wc --lines)" # For everyone else!
+elif [[ -f "/usr/bin/dpkg" ]]; then
+        pkg="$(dpkg --get-selections | wc --lines)" # For Debian based distributions
 fi
 
-if [[ -f "/usr/bin/pacman" ]]; then
-        pkg="$(pacman -Q | wc --lines)"
-else
-        pkg="$(ls -d /var/db/pkg/*/* | wc --lines)"
-fi
 
 if [[ "$(whoami)" = "root" ]]; then
         tput setaf 1; echo "NOTE: Running a fetch script as root is stupid"
