@@ -81,7 +81,12 @@ fi
 
 # Base
 user="$(whoami)" # whoami returns the user who runs the command
-host="$(hostname)" # hostname returns your hostname from /etc/hostname
+
+if [[ -f "/etc/hostname" ]]; then
+    host="$(cat /etc/hostname)"
+else
+    host="$(hostname)" # hostname returns your hostname from /etc/hostname
+fi
 
 # Data
 kernel="$(uname -sr)" # Get kernel version
