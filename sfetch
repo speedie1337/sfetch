@@ -36,7 +36,7 @@ if [[ -f "/lib/systemd/systemd" ]]; then
 	init="systemd"
 elif [[ -f "/sbin/openrc" ]]; then
 	init="OpenRC"
-elif [[ -f "/usr/local/bin/runsvdir" ]]; then
+elif [[ -f "/usr/bin/runit" ]]; then
 	init="runit"
 elif [[ -f "/usr/bin/s6-rc" ]]; then
 	init="s6"
@@ -61,7 +61,7 @@ elif [[ $os =~ "Cutefish" ]]; then
 	os="CuteFish OS Linux" && art="Trash" # Trash can for Cutefish OS
 elif [[ $os =~ "Manjaro" ]]; then
 	os="Manjarno Linux" && art="Manjaro"
-elif [[ $os =~ "Void" ]]; then
+elif [[ $os =~ "void" ]]; then
     os="Void Linux" && art="Void"
 fi
 
@@ -113,6 +113,8 @@ elif [[ -f "/usr/bin/dpkg" ]]; then
         pkg="$(dpkg --get-selections | wc --lines)" # For Debian based distributions
 elif [[ -f "/usr/bin/rpm" ]]; then
         pkg="$(rpm -qa | wc --lines)" # For Red Hat/Fedora based distributions
+elif [[ -f "/usr/bin/xbps-query" ]]; then
+        pkg="$(xbps-query --list-pkgs | wc --lines)" # For Void based distributions
 fi
 
 
