@@ -1,5 +1,6 @@
 #!/bin/sh
 #
+# NOTE: Change /bin/sh to /bin/bash or /bin/zsh depending on what you have if it doesn't execute properly.
 #       __      _       _
 #  ___ / _| ___| |_ ___| |__
 # / __| |_ / _ \ __/ __| '_ \
@@ -67,7 +68,7 @@ fi
 
 # If the distro is not any of the above
 if [[ $os =~ "ANSI" ]]; then
-	os="$(uname -s)" && art="Linux" # Linux is the "generic" art
+	os="Linux" && art="Linux" # Linux is the "generic" art
 fi
 
 # Mac OS X distributions
