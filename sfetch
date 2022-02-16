@@ -64,11 +64,8 @@ elif [[ $os =~ "Manjaro" ]]; then
 	os="Manjarno Linux" && art="Manjaro"
 elif [[ $os =~ "void" ]]; then
     os="Void Linux" && art="Void"
-fi
-
-# If the distro is not any of the above
-if [[ $os =~ "ANSI" ]]; then
-	os="Linux" && art="Linux" # Linux is the "generic" art
+elif [[ $os =~ "KDE neon" ]]; then
+    os="KDE Neon" && art="Debian"
 fi
 
 # Mac OS X distributions
@@ -78,6 +75,11 @@ elif [[ $mac =~ "macOS" ]]; then
 	os="macOS" && art="macOS"
 elif [[ $mac =~ "Project 081" ]]; then
     os="Project 081" && art="Project 081"
+fi
+
+# If the distro is not any of the above
+if [[ $os =~ "NAME" ]]; then
+	os="Linux" && art="Linux" # Linux is the "generic" art
 fi
 
 # Base
