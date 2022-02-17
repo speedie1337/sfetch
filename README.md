@@ -28,10 +28,8 @@ Was bored so I decided to write a fetch tool!
 - Linux/Other Distro (used if your OS is none of the above)
 
 ## Use:
-1. cd /usr/bin
-2. sudo/doas wget https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
-3. sudo/doas chmod +x /usr/bin/sfetch
-4. Run sfetch
+1. sudo curl -o /usr/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
+2. Edit the file & change #!/bin/bash if you don't use Bash!
 
 ## Note:
 - macOS/Mac OS X support has not been tested (Although feel free to test it for me!)
