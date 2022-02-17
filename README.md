@@ -1,7 +1,8 @@
 # sfetch
 #### speedie's stupid fetch for macOS/Mac OS X and Linux
 
-![image](https://user-images.githubusercontent.com/71722170/153240559-af416946-3948-451b-8f18-00ae9cb7f690.png)
+![image](https://user-images.githubusercontent.com/71722170/154552334-e50f6986-5222-4ecf-bf87-6c414632e498.png)
+
 
 Was bored so I decided to write a fetch tool! 
 
