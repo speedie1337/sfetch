@@ -69,12 +69,12 @@ elif [[ $os =~ "KDE neon" ]]; then
 fi
 
 # Mac OS X distributions
-if [[ $mac =~ "Mac OS X" ]]; then
-	os="Mac OS X" && art="Mac OS X"
-elif [[ $mac =~ "macOS" ]]; then
+if [[ $mac =~ "macOS" ]]; then
 	os="macOS" && art="macOS"
 elif [[ $mac =~ "OS X" ]]; then
         os="OS X" && art="Mac OS X"
+elif [[ $mac =~ "Mac OS X" ]]; then
+	os="Mac OS X" && art="Mac OS X"
 elif [[ $mac =~ "Project 081" ]]; then
     os="Project 081" && art="Project 081"
 fi
