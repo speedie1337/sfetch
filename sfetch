@@ -120,8 +120,8 @@ fi
 
 if [[ -f "/usr/bin/pacman" ]]; then
         pkg="$(pacman -Q | wc --lines)" # For Arch based distributions
-elif [[ -f "/var/db/pkg" ]]; then
-        pkg="$(ls -d /var/db/pkg/*/* | wc --lines)" # For everyone else!
+elif [[ -f "/etc/portage/make.conf" ]]; then
+        pkg="$(ls -d /var/db/pkg/*/* | wc --lines)" # For Gentoo based distributions
 elif [[ -f "/usr/bin/dpkg" ]]; then
         pkg="$(dpkg --get-selections | wc --lines)" # For Debian based distributions
 elif [[ -f "/usr/bin/rpm" ]]; then
@@ -129,7 +129,7 @@ elif [[ -f "/usr/bin/rpm" ]]; then
 elif [[ -f "/usr/bin/xbps-query" ]]; then
         pkg="$(xbps-query --list-pkgs | wc --lines)" # For Void based distributions
 elif [[ -f "/etc/nix/nix.conf" ]]; then
-        pkg="$(ls /run/current-system/sw/bin | wc --lines)"
+        pkg="$(ls /run/current-system/sw/bin | wc --lines)" # For NixOS based distributions
 fi
 
 if [[ "$(whoami)" = "root" ]]; then
@@ -157,7 +157,7 @@ tput setaf 5; echo "  QSSSSSSP       $initicon $(tput sgr0)     $init" && exit 0
 fi
 
 if [[ $art =~ "Funtoo" ]]; then
-tput setaf 3; echo  "                      $user@$host"
+tput setaf 3; echo "                       $user@$host"
 tput setaf 5; echo "   __             _    $osicon $(tput sgr0)       $os"
 tput setaf 5; echo "  / _|_   _ _ __ | |_  $kernelicon $(tput sgr0)   $kernel"
 tput setaf 5; echo " | |_| | | | '_ \| __| $shellicon $(tput sgr0)    $shell"
@@ -182,7 +182,7 @@ tput setaf 6; echo " /P^         ^q\ $initicon $(tput sgr0)       $init" && exit
 fi
 
 if [[ $art =~ "Manjaro" ]]; then
-tput setaf 2; echo "                    $user@$host"
+tput setaf 3; echo "                   $user@$host"
 tput setaf 10; echo " ZZZZZZZZZZZ ZZZZZ $osicon $(tput sgr0)       $os"
 tput setaf 10; echo " ZZZZZZZZZZZ ZZZZZ $kernelicon $(tput sgr0)   $kernel"
 tput setaf 10; echo " ZZZZZ zzzzz ZZZZZ $shellicon $(tput sgr0)    $shell"
@@ -195,7 +195,7 @@ fi
 
 # Misc
 if [[ $art =~ "Trash" ]]; then
-tput setaf 3; echo  "            $user@$host"
+tput setaf 3; echo "             $user@$host"
 tput setaf 5; echo "  ____n____  $osicon $(tput sgr0)       $os"
 tput setaf 5; echo " /         \ $kernelicon $(tput sgr0)   $kernel"
 tput setaf 5; echo " -| | | | |- $shellicon $(tput sgr0)    $shell"
@@ -208,7 +208,7 @@ fi
 
 # Void based distributions
 if [[ $art =~ "Void" ]]; then
-tput setaf 2; echo "                         $user@$host"
+tput setaf 3; echo "                         $user@$host"
 tput setaf 2; echo "                         $osicon $(tput sgr0)       $os"
 tput setaf 2; echo " __     _____ ___ ____   $kernelicon $(tput sgr0)   $kernel"
 tput setaf 2; echo " \ \   / / _ \_ _|  _ \  $shellicon $(tput sgr0)    $shell"
@@ -221,7 +221,7 @@ fi
 
 # Debian based distributions
 if [[ $art =~ "Debian" ]]; then
-tput setaf 1; echo "      wbbqqqw    $user@$host"
+tput setaf 1; echo "      wbbqqqw    $(tput setaf 3) $user@$host"
 tput setaf 1; echo "    wgw       gq $osicon $(tput sgr0)       $os"
 tput setaf 1; echo "   g     w    g  $kernelicon $(tput sgr0)   $kernel"
 tput setaf 1; echo "   ww    w    wa $shellicon $(tput sgr0)    $shell"
@@ -234,7 +234,7 @@ fi
 
 # Red Hat based distributions
 if [[ $art =~ "Fedora" ]]; then
-tput setaf 033; echo "    awffa  $user@$host"
+tput setaf 033; echo "    awffa  $(tput setaf 3) $user@$host"
 tput setaf 033; echo "   wfw     $osicon $(tput sgr0)       $os"
 tput setaf 033; echo "   ffw     $kernelicon $(tput sgr0)   $kernel"
 tput setaf 033; echo "   ffw     $shellicon $(tput sgr0)    $shell"
@@ -271,7 +271,7 @@ tput setaf 0; echo  " d88P   Y88b  $(tput sgr0) " && exit 0
 fi
 
 if [[ $art =~ "macOS" ]]; then
-tput setaf 0; echo  "  _ __ ___   __ _  ___  $(tput setaf 3;)$user@$host"
+tput setaf 0; echo  "  _ __ ___   __ _  ___  $(tput setaf 3;) $user@$host"
 tput setaf 0; echo  " | '_ ' _ \ / _' |/ __| $osicon $(tput sgr0)     $os"
 tput setaf 0; echo  " | | | | | | (_| | (__  $kernelicon $(tput sgr0) $kernel"
 tput setaf 0; echo  " |_| |_|_|_|\__,_|\___| $shellicon $(tput sgr0)  $shell"
