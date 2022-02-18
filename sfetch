@@ -6,8 +6,7 @@
 # / __| |_ / _ \ __/ __| '_ \
 # \__ \  _|  __/ || (__| | | |
 # |___/_|  \___|\__\___|_| |_|
-# speedie's stupid fetch tool
-# Version: 0.2
+# speedie's fetch
 ############################################################
 # Settings
 
@@ -104,10 +103,10 @@ totalrammac="$(sysctl hw.memsize | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; pr
 cpumac="$(sysctl -n machdep.cpu.brand_string)"
 fi
 
-if [[ -f "/usr/bin/uname" ]]; then
-	cpu="$(uname -p)"
+if [[ -f "/usr/bin/lscpu" ]]; then
+	cpu="$(lscpu | sed -nr '/Model name/ s/.*:\s*(.*) @ .*/\1/p')"
 else
-	cpu="$(sysctl -n machdep.cpu.brand_string)"
+	cpu="$(uname -p)"
 fi
 
 if [[ -f "/usr/bin/pacman" ]]; then
