@@ -224,7 +224,7 @@ fi
 
 # Debian based distributions
 if [[ $art =~ "Debian" ]]; then
-tput setaf 1; echo "      wbbqqqw    $(tput setaf 3) $user@$host"
+tput setaf 1; echo "      wbbqqqw    $(tput setaf 3)$user@$host"
 tput setaf 1; echo "    wgw       gq $osicon $(tput sgr0)       $os"
 tput setaf 1; echo "   g     w    g  $kernelicon $(tput sgr0)   $kernel"
 tput setaf 1; echo "   ww    w    wa $shellicon $(tput sgr0)    $shell"
@@ -237,7 +237,7 @@ fi
 
 # Red Hat based distributions
 if [[ $art =~ "Fedora" ]]; then
-tput setaf 033; echo "    awffa  $(tput setaf 3) $user@$host"
+tput setaf 033; echo "    awffa  $(tput setaf 3)$user@$host"
 tput setaf 033; echo "   wfw     $osicon $(tput sgr0)       $os"
 tput setaf 033; echo "   ffw     $kernelicon $(tput sgr0)   $kernel"
 tput setaf 033; echo "   ffw     $shellicon $(tput sgr0)    $shell"
@@ -251,7 +251,7 @@ fi
 # macOS distributions
 if [[ $art =~ "Project 081" ]]; then
 tput setaf 6; echo  " Y88b   d88P  "
-tput setaf 6; echo  "  Y88b d88P   $(tput setaf 3) $user@$host"
+tput setaf 6; echo  "  Y88b d88P   $(tput setaf 3)$user@$host"
 tput setaf 6; echo  "   Y88o88P    $osicon $(tput sgr0)     $os"
 tput setaf 6; echo  "    Y888P     $kernelicon $(tput sgr0) $kernel"
 tput setaf 6; echo  "    d888b     $shellicon $(tput sgr0)  $shell"
@@ -263,7 +263,7 @@ fi
 
 if [[ $art =~ "Mac OS X" ]]; then
 tput setaf 0; echo  " Y88b   d88P  "
-tput setaf 0; echo  "  Y88b d88P   $(tput setaf 3) $user@$host"
+tput setaf 0; echo  "  Y88b d88P   $(tput setaf 3)$user@$host"
 tput setaf 0; echo  "   Y88o88P    $osicon $(tput sgr0)     $os"
 tput setaf 0; echo  "    Y888P     $kernelicon $(tput sgr0) $kernel"
 tput setaf 0; echo  "    d888b     $shellicon $(tput sgr0)  $shell"
@@ -275,7 +275,7 @@ fi
 
 if [[ $art =~ "macOS" ]]; then
 tput setaf 0; echo  "  _ __ ___   __ _  ___  "
-tput setaf 0; echo  " | '_ ' _ \ / _' |/ __| $(tput setaf 3;) $user@$host"
+tput setaf 0; echo  " | '_ ' _ \ / _' |/ __| $(tput setaf 3)$user@$host"
 tput setaf 0; echo  " | | | | | | (_| | (__  $osicon $(tput sgr0)     $os"
 tput setaf 0; echo  " |_| |_|_|_|\__,_|\___| $kernelicon $(tput sgr0) $kernel"
 tput setaf 0; echo  "      / _ \/ ___|       $shellicon $(tput sgr0)  $shell"
