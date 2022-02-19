@@ -75,12 +75,12 @@ elif [[ $os =~ "nixos" ]]; then
 fi
 
 # Mac OS X distributions
-if [[ $mac =~ "macOS" ]]; then
+if [[ $mac =~ "081" ]]; then
+         os="Project 081" && art="Project 081"
+elif [[ $mac =~ "macOS" ]]; then
          os="macOS" && art="macOS"
 elif [[ $mac =~ "OS X" ]]; then
          os="Mac OS X " && art="Mac OS X"
-elif [[ $mac =~ "Project 081" ]]; then
-         os="Project 081" && art="Project 081"
 fi
 
 # If the distro is not any of the above
