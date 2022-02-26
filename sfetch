@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # NOTE: Change /bin/bash to /bin/zsh or /bin/sh depending on what you have if it doesn't execute properly.
 # For NixOS users: Change #!/bin/bash to #!/run/current-system/sw/bin/bash
@@ -26,6 +26,20 @@ macicon="MAC:"
 
 ##############################
 # Code, probably don't edit.
+
+if [[ $SHELL = "/bin/sh" ]]; then
+    ls /bin/bash && replaceshell="#!/bin/bash"
+    ls /bin/zsh && replaceshell="#!/bin/zsh"
+    ls /run/current-system/sw/bin/bash && replaceshell="#!/run/current-system/sw/bin/bash"
+    ls /run/current-system/sw/bin/zsh && replaceshell="#!/run/current-system/sw/bin/zsh"
+    sudo || alias sudo=doas
+    fetch="$(echo ${0})"
+    mkdir -pv $HOME/.config/sfetch
+    cat $fetch > $HOME/.config/sfetch/sfetch-orig
+    echo $replaceshell > $fetch
+    sudo cat $HOME/.config/sfetch/sfetch-orig >> $fetch && clear && $fetch
+    doas cat $HOME/.config/sfetch/sfetch-orig >> $fetch && CLEAR && $fetch
+fi
 
 # Get the OS
 if [[ -f "/etc/os-release" ]]; then
