@@ -28,32 +28,38 @@ Was bored so I decided to write a fetch tool!
 - Linux/Other Distro (used if your OS is none of the above)
 
 ## Usage on most GNU/Linux distros
-    sudo echo "#!/usr/bin/env $SHELL" > /usr/bin/sfetch
-    sudo curl -o /usr/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
+
+    sudo echo "#!/usr/bin/env $SHELL" > /usr/bin/sfetch && \ 
+    sudo curl -o /usr/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
+    sudo cat /usr/bin/sfetch-base >> /usr/local/bin/sfetch && \
     sudo chmod +x /usr/bin/sfetch
 
 ## Usage on Mac OS X (Pre-10.11)
 
-    sudo echo "#!/usr/bin/env $SHELL" > /usr/bin/sfetch
-    sudo curl -o /usr/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
+    sudo echo "#!/usr/bin/env $SHELL" > /usr/bin/sfetch && \ 
+    sudo curl -o /usr/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
+    sudo cat /usr/bin/sfetch-base >> /usr/local/bin/sfetch && \
     sudo chmod +x /usr/bin/sfetch
 
 ## Usage on Mac OS X (10.11 and later)
 
-    sudo echo "#!/usr/local/bin/env $SHELL" > /usr/local/bin/sfetch
-    sudo curl -o /usr/local/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
+    sudo echo "#!/usr/local/bin/env $SHELL" > /usr/local/bin/sfetch && \
+    sudo curl -o /usr/local/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
+    sudo cat /usr/local/bin/sfetch-base >> /usr/local/bin/sfetch && \
     sudo chmod +x /usr/local/bin/sfetch
 
 ## Usage on Mac OS X (10.15 and later)
 
-    sudo echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && 
-    sudo curl -o /usr/local/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
+    sudo echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && \ 
+    sudo curl -o /usr/local/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
+    sudo cat /usr/local/bin/sfetch-base >> /usr/local/bin/sfetch && \
     sudo chmod +x /usr/local/bin/sfetch
 
 ## Usage on Project 081 (Pre-0.6)
 
-    sudo echo "#!/usr/bin/env $SHELL" > /usr/bin/sfetch
-    sudo curl -o /usr/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
+    sudo echo "#!/usr/bin/env $SHELL" > /usr/bin/sfetch && \
+    sudo curl -o /usr/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
+    sudo cat /usr/bin/sfetch-base >> /usr/bin/sfetch && \
     sudo chmod +x /usr/bin/sfetch
 
 ## Usage on Project 081 (0.6 and later)
@@ -62,16 +68,18 @@ Already built in, run sfetch in the Terminal to use.
 ## Usage on NixOS
 NOTE: I'm a total fucking normie when it comes to NixOS, if there's a better way to do this, please let me know!
 
-    sudo echo "#!/run/current-system/sw/usr/bin/env $SHELL" > /run/current-system/sw/usr/bin/sfetch
-    sudo curl -o /run/current-system/sw/usr/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
+    sudo echo "#!/run/current-system/sw/usr/bin/env $SHELL" > /run/current-system/sw/usr/bin/sfetch && \
+    sudo curl -o /run/current-system/sw/usr/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
+    sudo cat /usr/bin/sfetch-base >> /usr/local/bin/sfetch && \
     sudo chmod +x /run/current-system/sw/usr/bin/sfetch
 
 ## Usage on Alpine Linux (and other distros without GNU coreutils)
 NOTE: I cannot provide any support for GNU-less systems!
 
-    sudo echo "#!/usr/bin/env $SHELL" > /usr/bin/sfetch
-    sudo curl -o /usr/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
-    sudo chmod +x /usr/bin/sfetch
+    sudo echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && \
+    sudo curl -o /usr/local/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
+    sudo cat /usr/local/bin/sfetch-base >> /usr/local/bin/sfetch && \
+    sudo chmod +x /usr/local/bin/sfetch && \
     sudo apk install ncurses
 
 ## Note
