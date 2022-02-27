@@ -46,7 +46,8 @@ Was bored so I decided to write a fetch tool!
 
 ## Usage on Mac OS X (10.15 and later)
 
-    sudo echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && sudo curl -o /usr/local/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
+    sudo echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && 
+    sudo curl -o /usr/local/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
     sudo chmod +x /usr/local/bin/sfetch
 
 ## Usage on Project 081 (Pre-0.6)
