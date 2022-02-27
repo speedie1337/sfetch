@@ -28,9 +28,9 @@ Was bored so I decided to write a fetch tool!
 - Linux/Other Distro (used if your OS is none of the above)
 
 ## Usage on most GNU/Linux distros
-   sudo echo "#!/usr/bin/env $SHELL" > /usr/bin/sfetch
-   sudo curl -o /usr/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
-   sudo chmod +x /usr/bin/sfetch
+    sudo echo "#!/usr/bin/env $SHELL" > /usr/bin/sfetch
+    sudo curl -o /usr/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch
+    sudo chmod +x /usr/bin/sfetch
 
 ## Usage on Mac OS X (Pre-10.11)
 
