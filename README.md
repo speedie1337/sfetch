@@ -1,8 +1,7 @@
 # sfetch
 #### speedie's fetch for macOS/Mac OS X and Linux
 
-![image](https://user-images.githubusercontent.com/71722170/154552334-e50f6986-5222-4ecf-bf87-6c414632e498.png)
-
+![image](https://user-images.githubusercontent.com/71722170/156442168-6a99c710-cf0f-4877-ba3f-f6806c5e0364.png)
 
 Was bored so I decided to write a fetch tool! 
 
@@ -23,8 +22,9 @@ Was bored so I decided to write a fetch tool!
 - Project 081 (Mac OS X distro)
 - Mac OS X
 - macOS
-- PearOS (Garbage)
-- Cutefish OS (Garbage)
+- Niresh and other distros (Trash)
+- PearOS (Trash)
+- Cutefish OS (Trash)
 - Linux/Other Distro (used if your OS is none of the above)
 
 ## Usage on most GNU/Linux distros
@@ -88,18 +88,10 @@ NOTE: I cannot provide any support for GNU-less systems!
 
 ## Test Version
 
-If you wish to use the 99.9% likely broken version of sfetch, you can get it by using:
+If you wish to use the 99.9% likely broken and old version of sfetch, you can get it by using:
 
     sudo curl -o /usr/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/sfetch-test/sfetch
 
 ## Contributing
 
 If you like this project, please contribute with ASCII for more distros. Thank you!
-
-## Having issues?
-
-Issue: tput: command not found or similar
-Solution: Install ncurses
-
-Issue: [[ command not found or similar
-Solution: Edit the sfetch script and add #!/bin/bash or #!/bin/zsh at the top
