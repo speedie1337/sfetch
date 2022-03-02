@@ -205,7 +205,7 @@ elif [[ -f "/etc/nix/nix.conf" ]]; then
 fi
 
 if [[ "$(whoami)" = "root" ]]; then
-        tput setaf 1; echo "NOTE: Running a fetch script as root is stupid"
+        echo -e "${red}NOTE: Running a fetch script as root is stupid"
 fi
 
 #os="PearOS" # For testing only
