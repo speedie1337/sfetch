@@ -74,6 +74,23 @@ fi
 # Mac OS X distributions
 if [[ $mac =~ "081" ]]; then
          os="Project 081" && art="Project 081" && mac=""
+elif [[ $mac =~ "Niresh" ]]; then
+         os="Niresh" && art="iTrash" && mac=""
+elif [[ $mac =~ "Deneb" ]]; then
+         os="iDeneb" && art="iTrash" && mac=""
+elif [[ $mac =~ "Zone" ]]; then
+         os="Niresh" && art="iTrash" && mac=""
+elif [[ $mac =~ "atk" ]]; then
+         os="iAtkos" && art="iTrash" && mac=""
+elif [[ $mac =~ "JaS" ]]; then
+         os="JaS" && art="iTrash" && mac=""
+elif [[ $mac =~ "osx86" ]]; then
+         os="OSx86" && art="iTrash" && mac=""
+fi
+
+# Official Mac OS X versions
+if [[ $mac =~ "081" ]]; then
+         os="Project 081" && art="Project 081" && mac=""
 elif [[ $mac =~ "10.10" ]]; then
          os="OS X 10.10 Yosemite" && art="Mac OS X" && mac=""
 elif [[ $mac =~ "10.11" ]]; then
@@ -237,7 +254,7 @@ tput setaf 10; echo " ZZZZZ ZZZZZ ZZZZZ $initicon $(tput sgr0)     $init " && ex
 fi
 
 # Misc
-if [[ $art =~ "Trash" ]]; then
+if [[ $art = "Trash" ]]; then
 tput setaf 3; echo "             $user@$host"
 tput setaf 5; echo "  ____n____  $osicon $(tput sgr0)       $os"
 tput setaf 5; echo " /         \ $kernelicon $(tput sgr0)   $kernel"
@@ -323,6 +340,19 @@ tput sgr0; echo  "     | | | \___ \       $macicon $(tput sgr0)    $macmodel"
 tput sgr0; echo  "     | |_| |___) |      $cpuicon $(tput sgr0)    $cpumac"
 tput sgr0; echo  "      \___/|____/       "
 tput sgr0; echo "" && exit 0
+fi
+
+# Trash for Mac OS X distros
+if [[ $art = "iTrash" ]]; then
+tput setaf 3; echo "             "
+tput setaf 5; echo "  ____n____  $(tput setaf 3)$user@$host"
+tput setaf 5; echo " /         \ $osicon $(tput sgr0)     $os"
+tput setaf 5; echo " -| | | | |- $kernelicon $(tput sgr0) $kernel"
+tput setaf 5; echo "  | | | | |  $shellicon $(tput sgr0)  $shell"
+tput setaf 5; echo "  | | | | |  $macicon $(tput sgr0)    $macmodel"
+tput setaf 5; echo "  | | | | |  $cpuicon $(tput sgr0)    $cpumac"
+tput setaf 5; echo "  | | | | |  "
+tput setaf 5; echo "  \-------/  $(tput setaf 1)NOTE: You should not use distros. https://dortania.github.io/OpenCore-Install-Guide" && exit 0
 fi
 
 # Generic art if yours is none of the above
