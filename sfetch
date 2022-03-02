@@ -122,10 +122,14 @@ fi
 # Base
 user="$(whoami)" # whoami returns the user who runs the command
 
-if [[ -f "/etc/hostname" ]]; then
-    host="$(cat /etc/hostname)"
+if [[ "$(cat /etc/hostname)" = "" ]]; then
+    host="$(hostname)"
 else
-    host="$(hostname)" # hostname returns your hostname from /etc/hostname
+    host="$(cat /etc/hostname)" # hostname returns your hostname from /etc/hostname
+fi
+
+if [[ "$host" = "" ]]; then
+    host="$(uname -n)"
 fi
 
 # Data
