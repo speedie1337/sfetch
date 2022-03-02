@@ -122,14 +122,19 @@ fi
 # Base
 user="$(whoami)" # whoami returns the user who runs the command
 
-if [[ "$(cat /etc/hostname)" = "" ]]; then
-    host="$(hostname)"
+if [[ -f "/etc/hostname" ]]; then
+    host="$(cat /etc/hostname)"
 else
-    host="$(cat /etc/hostname)" # hostname returns your hostname from /etc/hostname
+    host="$(hostname)"
 fi
 
+# Fallback
 if [[ "$host" = "" ]]; then
     host="$(uname -n)"
+elif [[ "$host" = "" ]]; then
+    host="$(cat /proc/sys/kernel/hostname)"
+elif [[ "$host" = "" ]]; then
+    host="$(hostnamectl --static)"
 fi
 
 # Data
