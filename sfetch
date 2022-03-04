@@ -38,9 +38,9 @@ orange='\033[0;33m' # orange (used for lunix)
 
 # Get the OS
 if [[ -f "/etc/os-release" ]]; then
-    os="$(cat /etc/os-release)" # Get the OS on Linux
+    os="$(< /etc/os-release)" # Get the OS on Linux
 elif [[ -f "/System/Library/CoreServices/SystemVersion.plist" ]]; then
-	mac="$(cat /System/Library/CoreServices/SystemVersion.plist)" && macmodel="$(sysctl hw.model | sed 's/hw.model: //')" # Get the OS (macOS)
+	mac="$(< /System/Library/CoreServices/SystemVersion.plist)" && macmodel="$(sysctl hw.model | sed 's/hw.model: //')" # Get the OS (macOS)
 fi
 
 # Check what init system the user is using.
@@ -152,7 +152,7 @@ fi
 user="$(whoami)" # whoami returns the user who runs the command
 
 if [[ -f "/etc/hostname" ]]; then
-    host="$(cat /etc/hostname)"
+    host="$(< /etc/hostname)"
 else
     host="$(hostname)"
 fi
@@ -162,8 +162,8 @@ kernel="$(uname -sr)" # Get kernel version
 shell="$(basename "${SHELL}")"
 
 if [[ -f "/proc/meminfo" ]]; then
-totalram="$(cat /proc/meminfo | grep -i 'memtotal' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}')"
-usedram="$(cat /proc/meminfo | grep -i 'Active:' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}' | awk 'NR!=2')"
+totalram="$(< /proc/meminfo | grep -i 'memtotal' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}')"
+usedram="$(< /proc/meminfo | grep -i 'Active:' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}' | awk 'NR!=2')"
 fi
 
 if [[ -f "/System/Library/CoreServices/SystemVersion.plist" ]]; then
@@ -215,18 +215,12 @@ elif [[ "$init" = "" ]]; then
 elif [[ "$host" = "" ]]; then
     host="$(uname -n)"
 elif [[ "$host" = "" ]]; then
-    host="$(cat /proc/sys/kernel/hostname)"
+    host="$(< /proc/sys/kernel/hostname)"
 elif [[ "$host" = "" ]]; then
     host="$(hostnamectl --static)"
 fi
 
-
-#os="PearOS" # For testing only
-#art="Trash" # For testing only
-#tput setaf 3; echo $user@$host" # For testing only
-
 # Display everything to the user!
-# NOTE: Ascii must be 8 lines in height!
 
 # Gentoo based distributions
 if [[ $art = "Gentoo" ]]; then
