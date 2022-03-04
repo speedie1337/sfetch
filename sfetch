@@ -157,15 +157,6 @@ else
     host="$(hostname)"
 fi
 
-# Fallback
-if [[ "$host" = "" ]]; then
-    host="$(uname -n)"
-elif [[ "$host" = "" ]]; then
-    host="$(cat /proc/sys/kernel/hostname)"
-elif [[ "$host" = "" ]]; then
-    host="$(hostnamectl --static)"
-fi
-
 # Data
 kernel="$(uname -sr)" # Get kernel version
 shell="$(basename "${SHELL}")"
@@ -219,9 +210,16 @@ elif [[ "$totalram" = "" ]]; then
     totalram="Unknown"
 elif [[ "$usedram" = "" ]]; then
     usedram="Unknown"
-elif [[ "$init" ]]; then
+elif [[ "$init" = "" ]]; then
     init="Unknown"
+elif [[ "$host" = "" ]]; then
+    host="$(uname -n)"
+elif [[ "$host" = "" ]]; then
+    host="$(cat /proc/sys/kernel/hostname)"
+elif [[ "$host" = "" ]]; then
+    host="$(hostnamectl --static)"
 fi
+
 
 #os="PearOS" # For testing only
 #art="Trash" # For testing only
