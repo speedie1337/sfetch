@@ -65,6 +65,9 @@ Was bored so I decided to write a fetch tool!
 ## Usage on Project 081 (0.6 and later)
 Already built in, run sfetch in the Terminal to use.
 
+## Usage on distros with spDE
+Already built in, run sfetch in the Terminal to use.
+
 ## Usage on NixOS
 NOTE: I'm a total fucking normie when it comes to NixOS, if there's a better way to do this, please let me know!
 
