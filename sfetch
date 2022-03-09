@@ -162,8 +162,9 @@ kernel="$(uname -sr)" # Get kernel version
 shell="$(basename "${SHELL}")"
 
 if [[ -f "/proc/meminfo" ]]; then
-totalram="$(< /proc/meminfo grep -i 'memtotal' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}')"
-usedram="$(free -h --giga | awk '/^Mem/ {print $3}')"
+totalram="$(< /proc/meminfo grep -i 'memtotal' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024000; print $1"GB";}' | awk 'NR!-2')"
+usedram2="$(free -h --giga | awk '/^Mem/ {print $3}')"
+usedram="echo '$usedram2'B"
 fi
 
 if [[ "$usedram" = "" ]]; then
