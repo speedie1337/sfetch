@@ -163,6 +163,10 @@ shell="$(basename "${SHELL}")"
 
 if [[ -f "/proc/meminfo" ]]; then
 totalram="$(< /proc/meminfo grep -i 'memtotal' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}')"
+usedram="$(free -h --giga | awk '/^Mem/ {print $3}')"
+fi
+
+if [[ "$usedram" = "" ]]; then
 usedram="$(< /proc/meminfo grep -i 'Active:' | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; print $1,"MB";}' | awk 'NR!=2')"
 fi
 
