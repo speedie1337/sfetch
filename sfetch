@@ -176,6 +176,10 @@ totalrammac="$(sysctl hw.memsize | grep -o '[[:digit:]]*' | awk '{$1=$1/1024; pr
 cpumac="$(sysctl -n machdep.cpu.brand_string)"
 fi
 
+if [[ -d "/usr/local/bin/.spDE" ]]; then
+spde="(sPDE)"
+fi
+
 if [[ -f "/usr/bin/lscpu" ]]; then
 	cpu="$(lscpu | sed -nr '/Model name/ s/.*:\s*(.*) @ .*/\1/p')"
 else
@@ -230,7 +234,7 @@ fi
 # Gentoo based distributions
 if [[ $art = "Gentoo" ]]; then
 echo -e "${yellow}                 $user@$host"
-echo -e "${purple}    dSSSSSb.     $osicon ${default}       $os"
+echo -e "${purple}    dSSSSSb.     $osicon ${default}       $os $spde"
 echo -e "${purple} .dSSSSSSSSSb.   $kernelicon ${default}   $kernel"
 echo -e "${purple} SSSS( )SSSSSSb  $shellicon ${default}    $shell"
 echo -e "${purple} QSSSSSSSSSSSSSb $pkgicon ${default} $pkg"
@@ -242,7 +246,7 @@ fi
 
 if [[ $art =~ "Funtoo" ]]; then
 echo -e "${yellow}                       $user@$host"
-echo -e "${purple}   __             _    $osicon ${default}       $os"
+echo -e "${purple}   __             _    $osicon ${default}       $os $spde"
 echo -e "${purple}  / _|_   _ _ __ | |_  $kernelicon ${default}   $kernel"
 echo -e "${purple} | |_| | | | '_ \| __| $shellicon ${default}    $shell"
 echo -e "${purple} |  _| |_| | | | | |_  $pkgicon ${default} $pkg "
@@ -255,7 +259,7 @@ fi
 # Arch based distributions
 if [[ $art =~ "Arch" ]]; then
 echo -e "${yellow}                 $user@$host"
-echo -e "${lblue}        .        $osicon ${default}         $os"
+echo -e "${lblue}        .        $osicon ${default}         $os $spde"
 echo -e "${lblue}       /#\       $kernelicon ${default}     $kernel"
 echo -e "${lblue}      /###\      $shellicon ${default}      $shell"
 echo -e "${lblue}     /p^###\     $pkgicon ${default}   $pkg"
@@ -267,7 +271,7 @@ fi
 
 if [[ $art =~ "Manjaro" ]]; then
 echo -e "${yellow}                   $user@$host"
-echo -e "${lgreen} ZZZZZZZZZZZ ZZZZZ $osicon ${default}       $os"
+echo -e "${lgreen} ZZZZZZZZZZZ ZZZZZ $osicon ${default}       $os $spde"
 echo -e "${lgreen} ZZZZZZZZZZZ ZZZZZ $kernelicon ${default}   $kernel"
 echo -e "${lgreen} ZZZZZ zzzzz ZZZZZ $shellicon ${default}    $shell"
 echo -e "${lgreen} ZZZZZ ZZZZZ ZZZZZ $pkgicon ${default} $pkg "
@@ -280,7 +284,7 @@ fi
 # Misc
 if [[ $art = "Trash" ]]; then
 echo -e "${yellow}             $user@$host"
-echo -e "${purple}  ____n____  $osicon ${default}       $os"
+echo -e "${purple}  ____n____  $osicon ${default}       $os $spde"
 echo -e "${purple} /         \ $kernelicon ${default}   $kernel"
 echo -e "${purple} -| | | | |- $shellicon ${default}    $shell"
 echo -e "${purple}  | | | | |  $pkgicon ${default} $pkg "
@@ -294,7 +298,7 @@ fi
 if [[ $art = "iTrash" ]]; then
 echo -e "${yellow}             "
 echo -e "${purple}  ____n____  ${yellow}$user@$host"
-echo -e "${purple} /         \ $osicon ${default}     $os"
+echo -e "${purple} /         \ $osicon ${default}     $os $spde"
 echo -e "${purple} -| | | | |- $kernelicon ${default} $kernel"
 echo -e "${purple}  | | | | |  $shellicon ${default}  $shell"
 echo -e "${purple}  | | | | |  $macicon ${default}    $macmodel"
@@ -306,7 +310,7 @@ fi
 # Void based distributions
 if [[ $art =~ "Void" ]]; then
 echo -e "${yellow}                         $user@$host"
-echo -e "${green}                         $osicon ${default}       $os"
+echo -e "${green}                         $osicon ${default}       $os $spde"
 echo -e "${green} __     _____ ___ ____   $kernelicon ${default}   $kernel"
 echo -e "${green} \ \   / / _ \_ _|  _ \  $shellicon ${default}    $shell"
 echo -e "${green}  \ \ / / | | | || | | | $pkgicon ${default} $pkg "
@@ -319,7 +323,7 @@ fi
 # Debian based distributions
 if [[ $art =~ "Debian" ]]; then
 echo -e "${red}      wbbqqqw    ${yellow}$user@$host"
-echo -e "${red}    wgw       gq $osicon ${default}       $os"
+echo -e "${red}    wgw       gq $osicon ${default}       $os $spde"
 echo -e "${red}   g     w    g  $kernelicon ${default}   $kernel"
 echo -e "${red}   ww    w    wa $shellicon ${default}    $shell"
 echo -e "${red}    b     wwwww  $pkgicon ${default} $pkg "
@@ -332,7 +336,7 @@ fi
 # Red Hat based distributions
 if [[ $art =~ "Fedora" ]]; then
 echo -e "${blue}    awffa  ${yellow}$user@$host"
-echo -e "${blue}   wfw     $osicon ${default}       $os"
+echo -e "${blue}   wfw     $osicon ${default}       $os $spde"
 echo -e "${blue}   ffw     $kernelicon ${default}   $kernel"
 echo -e "${blue}   ffw     $shellicon ${default}    $shell"
 echo -e "${blue} abwfwba   $pkgicon ${default} $pkg "
@@ -346,7 +350,7 @@ fi
 if [[ $art =~ "Project 081" ]]; then
 echo -e "${lblue} Y88b   d88P  "
 echo -e "${lblue}  Y88b d88P   ${yellow}$user@$host"
-echo -e "${lblue}   Y88o88P    $osicon ${default}     $os"
+echo -e "${lblue}   Y88o88P    $osicon ${default}     $os $spde"
 echo -e "${lblue}    Y888P     $kernelicon ${default} $kernel"
 echo -e "${lblue}    d888b     $shellicon ${default}  $shell"
 echo -e "${lblue}   d88888b    $macicon ${default}    $macmodel"
@@ -358,7 +362,7 @@ fi
 if [[ $art =~ "Mac OS X" ]]; then
 echo -e "${black} Y88b   d88P  "
 echo -e "${black}  Y88b d88P   ${yellow}$user@$host"
-echo -e "${black}   Y88o88P    $osicon ${default}     $os"
+echo -e "${black}   Y88o88P    $osicon ${default}     $os $spde"
 echo -e "${black}    Y888P     $kernelicon ${default} $kernel"
 echo -e "${black}    d888b     $shellicon ${default}  $shell"
 echo -e "${black}   d88888b    $macicon ${default}    $macmodel"
@@ -370,7 +374,7 @@ fi
 if [[ $art =~ "macOS" ]]; then
 echo -e "${default}  _ __ ___   __ _  ___  "
 echo -e "${default} | '_ ' _ \ / _' |/ __| ${yellow}$user@$host"
-echo -e "${default} | | | | | | (_| | (__  $osicon ${default}     $os"
+echo -e "${default} | | | | | | (_| | (__  $osicon ${default}     $os $spde"
 echo -e "${default} |_| |_|_|_|\__,_|\___| $kernelicon ${default} $kernel"
 echo -e "${default}      / _ \/ ___|       $shellicon ${default}  $shell"
 echo -e "${default}     | | | \___ \       $macicon ${default}    $macmodel"
@@ -381,7 +385,7 @@ fi
 
 # Generic art if yours is none of the above
 echo -e "${orange}             $user@$host"
-echo -e "${orange}     .--.    $osicon ${default}       $os"
+echo -e "${orange}     .--.    $osicon ${default}       $os $spde"
 echo -e "${orange}    |o_o |   $kernelicon ${default}   $kernel"
 echo -e "${orange}    |:_/ |   $shellicon ${default}    $shell"
 echo -e "${orange}   //   \ \  $pkgicon ${default} $pkg"
