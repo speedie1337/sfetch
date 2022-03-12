@@ -177,7 +177,7 @@ cpumac="$(sysctl -n machdep.cpu.brand_string)"
 fi
 
 if [[ -d "/usr/local/bin/.spDE" ]]; then
-spde="(sPDE)"
+spde="(spDE)"
 fi
 
 if [[ -f "/usr/bin/lscpu" ]]; then
