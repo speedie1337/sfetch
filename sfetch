@@ -5,6 +5,11 @@
 # \__ \  _|  __/ || (__| | | |
 # |___/_|  \___|\__\___|_| |_|
 # speedie's fetch
+# This fetch is licensed under the MIT license.
+# For more information, see https://raw.githubusercontent.com/speediegamer/sfetch/main/LICENSE
+#
+# This fetch is also bundled with spDE.
+# Please report any bugs to https://github.com/speediegamer/sfetch/issues
 ############################################################
 # Settings
 
