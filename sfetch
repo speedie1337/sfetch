@@ -68,7 +68,7 @@ elif [[ $os =~ "Debian" ]]; then
 elif [[ $os =~ "pearOS" ]]; then 
 	os="PearOS Linux" && art="Trash" # Trash can for PearOS
 elif [[ $os =~ "Ubuntu" ]]; then
-	os="Ubuntu Linux" && art="Debian" # No ASCII art for Ubuntu yet, using Debian art
+	os="Ubuntu Linux" && art="Trash" # No ASCII art for Ubuntu yet, using Debian art
 elif [[ $os =~ "Fedora" ]]; then
 	os="Fedora Linux" && art="Fedora"
 elif [[ $os =~ "Cutefish" ]]; then
