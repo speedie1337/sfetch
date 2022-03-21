@@ -6,6 +6,7 @@
 # |___/_|  \___|\__\___|_| |_|
 # speedie's fetch
 # This fetch is licensed under the MIT license.
+# Even if it's technically allowed to make proprietary software with it, it would be nice if you make your software free software.
 # For more information, see https://raw.githubusercontent.com/speediegamer/sfetch/main/LICENSE
 #
 # This fetch is also bundled with spDE.
@@ -46,7 +47,7 @@ orange='\033[0;33m' # orange (used for lunix)
 if [[ -f "/etc/os-release" ]]; then
     os="$(< /etc/os-release)" # Get the OS on Linux
 elif [[ -f "/System/Library/CoreServices/SystemVersion.plist" ]]; then
-	mac="$(< /System/Library/CoreServices/SystemVersion.plist)" && macmodel="$(sysctl hw.model | sed 's/hw.model: //')" # Get the OS (macOS)
+    mac="$(< /System/Library/CoreServices/SystemVersion.plist)" && macmodel="$(sysctl hw.model | sed 's/hw.model: //')" # Get the OS (macOS)
 fi
 
 # Check what init system the user is using.
