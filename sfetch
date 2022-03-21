@@ -31,7 +31,8 @@ default='\033[0m' # default i guess
 yellow='\033[1;33m' # yellow (used for hostname and username)
 black='\033[0;30m' # black (used for Mac OS X)
 purple='\033[0;35m' # purple (used for Gentoo, Funtoo and Trash)
-lblue='\033[1;34m' # light blue (used for Arch, Project 081)
+lblue='\033[1;34m' # light blue (used for Project 081)
+cyan='\033[0;36m' # cyan (used for Arch)
 blue='\033[0;34m' # blue (used for Fedora)
 lgreen='\033[1;32m' # light green (used for Manjaro)
 green='\033[0;32m' # green (used for Void)
@@ -264,14 +265,14 @@ fi
 # Arch based distributions
 if [[ $art =~ "Arch" ]]; then
 echo -e "${yellow}                 $user@$host"
-echo -e "${lblue}        .        $osicon ${default}         $os $spde"
-echo -e "${lblue}       /#\       $kernelicon ${default}     $kernel"
-echo -e "${lblue}      /###\      $shellicon ${default}      $shell"
-echo -e "${lblue}     /p^###\     $pkgicon ${default}   $pkg"
-echo -e "${lblue}    /##P^q##\    $cpuicon ${default}        $cpu"
-echo -e "${lblue}   /##(   )##\   $ramicon ${default}        $totalram"
-echo -e "${lblue}  /###q#    ,^\  $usedramicon ${default}       $usedram"
-echo -e "${lblue} /P^         ^q\ $initicon ${default}       $init" && exit 0
+echo -e "${cyan}        .        $osicon ${default}         $os $spde"
+echo -e "${cyan}       /#\       $kernelicon ${default}     $kernel"
+echo -e "${cyan}      /###\      $shellicon ${default}      $shell"
+echo -e "${cyan}     /p^###\     $pkgicon ${default}   $pkg"
+echo -e "${cyan}    /##P^q##\    $cpuicon ${default}        $cpu"
+echo -e "${cyan}   /##(   )##\   $ramicon ${default}        $totalram"
+echo -e "${cyan}  /###q#    ,^\  $usedramicon ${default}       $usedram"
+echo -e "${cyan} /P^         ^q\ $initicon ${default}       $init" && exit 0
 fi
 
 if [[ $art =~ "Manjaro" ]]; then
