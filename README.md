@@ -1,5 +1,9 @@
 # sfetch
-#### speedie's fetch for macOS/Mac OS X and Linux
+#### speedie's fetch for macOS/Mac OS X and GNU/Linux.
+
+## NOTE
+sfetch is pretty poorly written and has a lot of bash-isms.
+I will likely be rewriting this fetch soon. Consider saving your PRs until then :)
 
 ![image](https://user-images.githubusercontent.com/71722170/156442168-6a99c710-cf0f-4877-ba3f-f6806c5e0364.png)
 
@@ -28,73 +32,19 @@ Was bored so I decided to write a fetch tool!
 - Linux/Other Distro (used if your OS is none of the above)
 
 ## Usage on most GNU/Linux distros
-
-    echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && \ 
-    curl -o /usr/local/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
-    cat /usr/local/bin/sfetch-base >> /usr/local/bin/sfetch && \
+    curl -o /usr/local/bin/sfetch https://raw.githubusercontent.com/speediegq/sfetch/main/sfetch
     chmod +x /usr/local/bin/sfetch
 
-## Usage on Mac OS X (Pre-10.11)
-
-    echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && \ 
-    curl -o /usr/local/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
-    cat /usr/local/bin/sfetch-base >> /usr/local/bin/sfetch && \
+## Usage on macOS
+    curl -o /usr/local/bin/sfetch https://raw.githubusercontent.com/speediegq/sfetch/main/sfetch
     chmod +x /usr/local/bin/sfetch
-
-## Usage on Mac OS X (10.11 and later)
-
-    echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && \ 
-    curl -o /usr/local/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
-    cat /usr/local/bin/sfetch-base >> /usr/local/bin/sfetch && \
-    chmod +x /usr/local/bin/sfetch
-
-## Usage on Mac OS X (10.15 and later)
-
-    echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && \ 
-    curl -o /usr/local/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
-    cat /usr/local/bin/sfetch-base >> /usr/local/bin/sfetch && \
-    chmod +x /usr/local/bin/sfetch
-
-## Usage on Project 081 (Pre-0.6)
-
-    echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && \ 
-    curl -o /usr/local/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
-    cat /usr/local/bin/sfetch-base >> /usr/local/bin/sfetch && \
-    chmod +x /usr/local/bin/sfetch
-
-## Usage on Project 081 (0.6 and later)
-Already built in, run sfetch in the Terminal to use.
-
-## Usage on distros with spDE
-Already built in, run sfetch in the Terminal to use.
-
-## Usage on NixOS
-NOTE: I'm a total fucking normie when it comes to NixOS, if there's a better way to do this, please let me know!
-
-    echo "#!/run/current-system/sw/usr/bin/env $SHELL" > /run/current-system/sw/usr/local/bin/sfetch && \
-    curl -o /run/current-system/sw/usr/local/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
-    cat /usr/local/bin/sfetch-base >> /usr/local/bin/sfetch && \
-    chmod +x /run/current-system/sw/usr/local/bin/sfetch
-
-## Usage on Alpine Linux (and other distros without GNU coreutils)
-NOTE: I cannot provide any support for GNU-less systems!
-
-    echo "#!/usr/bin/env $SHELL" > /usr/local/bin/sfetch && \ 
-    curl -o /usr/local/bin/sfetch-base https://raw.githubusercontent.com/speediegamer/sfetch/main/sfetch && \
-    cat /usr/local/bin/sfetch-base >> /usr/local/bin/sfetch && \
-    chmod +x /usr/local/bin/sfetch && \
-    sudo apk install ncurses
 
 ## Note
 - Has been tested with both zsh and Bash but feel free to try other shells
-- Should work on POSIX compliant shells though!
-
-## Test Version
-
-If you wish to use the 99.9% likely broken and old version of sfetch, you can get it by using:
-
-    sudo curl -o /usr/bin/sfetch https://raw.githubusercontent.com/speediegamer/sfetch/sfetch-test/sfetch
+- I will not be providing any support for GNU-less operating systems. Consider creating a PR if you have a fix though.
 
 ## Contributing
 
 If you like this project, please contribute with ASCII for more distros. Thank you!
+
+Also consider donating some of your internet money, as in Monero (XMR) [here](https://speedie.gq/donate).
