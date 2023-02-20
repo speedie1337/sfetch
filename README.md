@@ -47,4 +47,4 @@ Was bored so I decided to write a fetch tool!
 
 If you like this project, please contribute with ASCII for more distros. Thank you!
 
-Also consider donating some of your internet money, as in Monero (XMR) [here](https://speedie.gq/donate).
+Also consider donating some of your internet money, as in Monero (XMR) [here](https://speedie.gq/donate.php).
