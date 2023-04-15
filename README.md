@@ -1,22 +1,19 @@
 # sfetch
-#### speedie's fetch for macOS/Mac OS X and GNU/Linux.
 
-## NOTE
-sfetch is pretty poorly written and has a lot of bash-isms.
-I will likely be rewriting this fetch soon. Consider saving your PRs until then :)
+speedie's fetch for macOS/Mac OS X and GNU/Linux.
 
 ![image](https://user-images.githubusercontent.com/71722170/156442168-6a99c710-cf0f-4877-ba3f-f6806c5e0364.png)
 
-Was bored so I decided to write a fetch tool! 
+Was bored so I decided to write a fetch tool! It currently fetches
 
-## It currently fetches:
 - Your distro
 - Your kernel and version
 - Your shell (zsh, bash, fish, etc.)
 - Your package count (Linux)
 - Your Mac (macOS/Mac OS X)
 
-## And has ASCII art for:
+And it also supports the following GNU/Linux distributions
+
 - Gentoo Linux
 - Funtoo Linux
 - Arch Linux
@@ -32,14 +29,17 @@ Was bored so I decided to write a fetch tool!
 - Linux/Other Distro (used if your OS is none of the above)
 
 ## Usage on most GNU/Linux distros
-    curl -o /usr/local/bin/sfetch https://raw.githubusercontent.com/speediegq/sfetch/main/sfetch
-    chmod +x /usr/local/bin/sfetch
+
+`curl -o /usr/bin/sfetch https://raw.githubusercontent.com/speediegq/sfetch/main/sfetch`
+`chmod +x /usr/bin/sfetch`
 
 ## Usage on macOS
-    curl -o /usr/local/bin/sfetch https://raw.githubusercontent.com/speediegq/sfetch/main/sfetch
-    chmod +x /usr/local/bin/sfetch
+
+`curl -o /usr/local/bin/sfetch https://raw.githubusercontent.com/speediegq/sfetch/main/sfetch`
+`chmod +x /usr/local/bin/sfetch`
 
 ## Note
+
 - Has been tested with both zsh and Bash but feel free to try other shells
 - I will not be providing any support for GNU-less operating systems. Consider creating a PR if you have a fix though.
 
@@ -47,4 +47,4 @@ Was bored so I decided to write a fetch tool!
 
 If you like this project, please contribute with ASCII for more distros. Thank you!
 
-Also consider donating some of your internet money, as in Monero (XMR) [here](https://speedie.gq/donate.php).
+Also consider donating some of your internet money, as in Monero (XMR) [here](https://speedie.site/donate.php).
