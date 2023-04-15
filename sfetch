@@ -40,28 +40,21 @@ green='\033[0;32m' # green (used for Void)
 red='\033[0;31m' # red (used for Debian)
 orange='\033[0;33m' # orange (used for lunix)
 
-##############################
-# Code, probably don't edit.
-
-# Get the OS
-if [[ -f "/etc/os-release" ]]; then
-    os="$(< /etc/os-release)" # Get the OS on Linux
-elif [[ -f "/System/Library/CoreServices/SystemVersion.plist" ]]; then
-    mac="$(< /System/Library/CoreServices/SystemVersion.plist)" && macmodel="$(sysctl hw.model | sed 's/hw.model: //')" # Get the OS (macOS)
+# get the OS
+if [ -f "/etc/os-release" ]; then
+    os="$(cat /etc/os-release)" # Get the OS on Linux
+elif [ -f "/System/Library/CoreServices/SystemVersion.plist" ]; then
+    mac="$(< /System/Library/CoreServices/SystemVersion.plist)"
+    macmodel="$(command -v sysctl > /dev/null && sysctl hw.model | sed 's/hw.model: //' || printf "Unknown\n")"
+else
+    printf "Unknown\n"
 fi
 
-# Check what init system the user is using.
-if [[ -f "/lib/systemd/systemd" ]]; then
-	init="systemd"
-elif [[ -f "/sbin/openrc" ]]; then
-	init="OpenRC"
-elif [[ -f "/usr/bin/runit" ]]; then
-	init="runit"
-elif [[ -f "/usr/bin/s6-rc" ]]; then
-	init="s6"
-elif [[ -f "/etc/systemd/user.conf" ]]; then
-        init="systemd"
-fi
+# check init
+[ -x "$(command -v rc-service)" ] && init="OpenRC"
+[ -x "$(command -v systemctl)" ] && init="systemd"
+[ -x "$(command -v runit)" ] && init="runit"
+[ -x "$(command -v s6-rc)" ] && init="s6"
 
 # Check what distro is used.
 if [[ $os =~ "Gentoo" ]]; then
@@ -211,8 +204,9 @@ elif [[ -f "/etc/nix/nix.conf" ]]; then
         pkg="$(ls /run/current-system/sw/bin | wc --lines)" # For NixOS based distributions
 fi
 
-if [[ "$(whoami)" = "root" ]]; then
-        echo -e "${red}NOTE: Running a fetch script as root is stupid"
+# root check
+if [ "$(id -u)" = "0" ]; then
+        printf "${red}NOTE: Running a fetch script as root is stupid.\n"
 fi
 
 # Failsafe just in case the values are empty
