@@ -1,13 +1,12 @@
 # sfetch
-#### speedie's fetch for macOS/Mac OS X and GNU/Linux.
-
-## NOTE
-sfetch is pretty poorly written and has a lot of bash-isms.
-I will likely be rewriting this fetch soon. Consider saving your PRs until then :)
 
 ![image](https://user-images.githubusercontent.com/71722170/156442168-6a99c710-cf0f-4877-ba3f-f6806c5e0364.png)
 
-Was bored so I decided to write a fetch tool! 
+speedie's fetch for macOS/Mac OS X and GNU/Linux.
+
+## Deprecated
+
+sfetch has been deprecated in favor of the more minimal and better written [neosfetch](https://git.speedie.site/speedie/neosfetch).
 
 ## It currently fetches:
 - Your distro
@@ -47,4 +46,4 @@ Was bored so I decided to write a fetch tool!
 
 If you like this project, please contribute with ASCII for more distros. Thank you!
 
-Also consider donating some of your internet money, as in Monero (XMR) [here](https://speedie.gq/donate.php).
+Also consider donating some of your internet money, as in Monero (XMR) [here](https://speedie.site/donate).
